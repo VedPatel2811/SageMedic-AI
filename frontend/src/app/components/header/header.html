@@ -1,0 +1,40 @@
+<header
+  class="fixed left-0 top-0 h-screen w-64 bg-[#fefefe] text-black shadow-lg"
+>
+  <div class="flex flex-col items-center p-6 border-b border-white/10">
+    <img
+      src="assets/logo.png"
+      alt="SageMedic AI Logo"
+      class="w-16 h-16 object-contain mb-4"
+    />
+    <h1 class="text-2xl font-semibold text-center">SageMedic AI</h1>
+  </div>
+  <nav class="mt-6">
+    <ul class="flex flex-col space-y-2">
+      @for (item of navItems; track item.path) {
+      <li class="flex justify-center">
+        <a
+          [routerLink]="item.path"
+          class="flex items-center gap-3 w-[90%] px-6 py-3 text-black hover:bg-[#eaf0fe] hover:text-[#2352b7] font-semibold rounded-lg transition-colors duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-5 h-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              [attr.d]="item.icon"
+            />
+          </svg>
+          {{ item.label }}
+        </a>
+      </li>
+      }
+    </ul>
+  </nav>
+</header>
