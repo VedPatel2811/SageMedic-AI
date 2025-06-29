@@ -1,0 +1,66 @@
+<div class="bg-[#e3f2fd] h-[100vh] m-0 pl-[260px] flex flex-col items-center">
+  <div
+    class="bg-[#fff3cd] border-[1px solid #ffeaa7] w-[75%] mt-[20px] p-[20px] rounded-lg shadow-lg text-[#856404]"
+  >
+    <h3 class="text-[16px] mb-[8px]">Important Disclaimer</h3>
+    <p class="text-[14px]">
+      This AI symptom checker is for informational purposes only and should not
+      replace professional medical advice. Always consult with a qualified
+      healthcare provider for proper diagnosis and treatment.
+    </p>
+  </div>
+
+  <div class="flex flex-col h-[75vh] w-[75%]">
+    <!-- Chat messages container -->
+    <div
+      #scrollContainer
+      class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar"
+      id="chat-messages"
+    >
+      <div class="flex gap-[12px]"
+        *ngFor="let message of messages"
+        [ngClass]="{'flex-row-reverse': message.type === 'user', 'flex-row': message.type === 'assistant'}"
+      >
+        <div class="w-[40px] h-[40px] rounded-[50%] flex items-center justify-center bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white shadow-lg">
+          <mat-icon *ngIf="message.type === 'assistant'">smart_toy</mat-icon>
+          <mat-icon *ngIf="message.type === 'user'">person</mat-icon>
+        </div>
+        <div
+          class="inline-block max-w-[75%] py-3 px-5 rounded-lg shadow-lg font-serif"
+          [ngClass]="{
+             'bg-[#cce6fc]': message.type === 'user',
+             'bg-[#f2fbff]': message.type === 'assistant'
+           }"
+        >
+          {{ message.text }}
+          <br>
+          <span class="text-xs text-gray-500 font-serif" *ngIf="message.timestamp">
+            {{ message.timestamp | date: 'shortTime' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input section -->
+    <form
+      (ngSubmit)="sendMessage()"
+      class="border-t rounded-[25px] text-[16px] border-gray-300 bg-[#fafafa] p-4 shadow-lg"
+    >
+      <div class="flex items-center gap-2">
+        <input
+          [(ngModel)]="userInput"
+          name="message"
+          type="text"
+          placeholder="e.g., I have a headache and fever for the past 2 days"
+          class="flex-1 px-4 py-2 rounded-full focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="w-10 h-10 flex justify-center items-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition mb-[8px] shadow-lg"
+        >
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

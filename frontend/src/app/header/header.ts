@@ -8,22 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [RouterLink, MatIconModule],
   templateUrl: './header.html',
 })
-export class HeaderComponent {
+export class Header {
   navItems = [
     {
       label: 'Home',
       path: '/',
       matIcon: 'home',
-    },
-    {
-      label: 'Check Symptoms',
-      path: '/check-symptoms',
-      matIcon: 'medical_services',
-    },
-    {
-      label: 'History',
-      path: '/history',
-      matIcon: 'history',
     },
     {
       label: 'Settings',
