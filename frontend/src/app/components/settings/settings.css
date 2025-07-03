@@ -1,0 +1,236 @@
+.settings-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.settings-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.settings-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.settings-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 16px;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settings-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.settings-card mat-card-header {
+  background: #f8f9fa;
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.settings-card mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.settings-card mat-card-title mat-icon {
+  color: #667eea;
+}
+
+.settings-card mat-card-subtitle {
+  margin: 8px 0 0 0;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.settings-card mat-card-content {
+  padding: 20px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  transition: background-color 0.2s ease;
+}
+
+.setting-item:hover {
+  background-color: #f8f9fa;
+  margin: 0 -20px;
+  padding: 16px 20px;
+  border-radius: 8px;
+}
+
+.setting-item.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.setting-info {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.setting-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.setting-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.setting-item mat-form-field {
+  min-width: 200px;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 30px 0;
+  flex-wrap: wrap;
+}
+
+.settings-actions button {
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.settings-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 15px;
+  }
+  
+  .settings-header {
+    padding: 15px;
+  }
+  
+  .settings-header h1 {
+    font-size: 24px;
+  }
+  
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .setting-item mat-form-field {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .settings-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .settings-actions button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .settings-container {
+    background: #1a1a1a;
+  }
+  
+  .settings-card {
+    background: #2d2d2d;
+    color: #ffffff;
+  }
+  
+  .settings-card mat-card-header {
+    background: #3d3d3d;
+    border-bottom-color: #4d4d4d;
+  }
+  
+  .settings-card mat-card-title {
+    color: #ffffff;
+  }
+  
+  .setting-item:hover {
+    background-color: #3d3d3d;
+  }
+  
+  .setting-info h3 {
+    color: #ffffff;
+  }
+  
+  .setting-info p {
+    color: #b0b0b0;
+  }
+}
+
+/* Animation for card entrance */
+.settings-card {
+  animation: slideInUp 0.4s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for multiple cards */
+.settings-card:nth-child(1) { animation-delay: 0.1s; }
+.settings-card:nth-child(2) { animation-delay: 0.2s; }
+.settings-card:nth-child(3) { animation-delay: 0.3s; }
+.settings-card:nth-child(4) { animation-delay: 0.4s; }

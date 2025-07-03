@@ -1,0 +1,174 @@
+<div class="about-container">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>About SageMedic AI</h1>
+      <p class="hero-subtitle">
+        Revolutionizing healthcare through artificial intelligence, making
+        medical insights accessible to everyone.
+      </p>
+      <div class="hero-stats">
+        <div *ngFor="let stat of stats" class="stat-item">
+          <div class="stat-number">{{ stat.number }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission Section -->
+  <div class="content-section">
+    <mat-card class="mission-card">
+      <mat-card-content>
+        <h2>Our Mission</h2>
+        <p>
+          At SageMedic AI, we believe that everyone deserves access to reliable
+          health information. Our mission is to bridge the gap between patients
+          and medical knowledge through cutting-edge artificial intelligence
+          technology, providing instant, accurate, and personalized health
+          insights while maintaining the highest standards of privacy and
+          security.
+        </p>
+        <p>
+          We understand that our AI-powered symptom checker is a tool for
+          information and education, not a replacement for professional medical
+          care. We always encourage users to consult with qualified healthcare
+          providers for proper diagnosis and treatment.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Features Section -->
+  <div class="content-section">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-grid">
+      <mat-card *ngFor="let feature of features" class="feature-card">
+        <mat-card-content>
+          <div class="feature-icon">
+            <mat-icon>{{ feature.icon }}</mat-icon>
+          </div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Team Section -->
+  <div class="content-section">
+    <h2 class="section-title">Our Medical Team</h2>
+    <div class="team-grid">
+      <mat-card *ngFor="let member of team" class="team-card">
+        <mat-card-content>
+          <div class="member-avatar">
+            <mat-icon>person</mat-icon>
+          </div>
+          <h3>{{ member.name }}</h3>
+          <h4>{{ member.role }}</h4>
+          <p>{{ member.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Technology Section -->
+  <div class="content-section">
+    <mat-card class="tech-card">
+      <mat-card-content>
+        <h2>Technology & Innovation</h2>
+        <div class="tech-content">
+          <div class="tech-info">
+            <h3>Advanced AI Algorithms</h3>
+            <p>
+              Our platform leverages state-of-the-art machine learning models
+              trained on extensive medical databases, peer-reviewed research,
+              and clinical guidelines. The AI continuously learns and improves
+              from new medical data while maintaining strict accuracy standards.
+            </p>
+
+            <h3>Security & Privacy</h3>
+            <p>
+              We implement enterprise-grade encryption and follow
+              HIPAA-compliant data handling practices. Your health information
+              is never shared without explicit consent, and all data is
+              anonymized for research purposes.
+            </p>
+
+            <h3>Medical Validation</h3>
+            <p>
+              Every AI response is validated against established medical
+              databases and reviewed by our team of healthcare professionals. We
+              maintain partnerships with leading medical institutions to ensure
+              accuracy and reliability.
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Disclaimer Section -->
+  <div class="content-section">
+    <mat-card class="disclaimer-card">
+      <mat-card-content>
+        <h2>Important Medical Disclaimer</h2>
+        <p>
+          <strong
+            >SageMedic AI is designed for informational and educational purposes
+            only.</strong
+          >
+          It is not intended to replace professional medical advice, diagnosis,
+          or treatment. Always seek the advice of your physician or other
+          qualified health provider with any questions you may have regarding a
+          medical condition.
+        </p>
+        <p>
+          Never disregard professional medical advice or delay in seeking it
+          because of something you have read or received from this application.
+          If you think you may have a medical emergency, call your doctor or
+          emergency services immediately.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Contact & Legal Section -->
+  <div class="content-section">
+    <div class="contact-legal-grid">
+      <mat-card class="contact-card">
+        <mat-card-content>
+          <h3>Get in Touch</h3>
+          <p>Have questions or need support? Our team is here to help.</p>
+          <button mat-raised-button color="primary" (click)="contactSupport()">
+            <mat-icon>email</mat-icon>
+            Contact Support
+          </button>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="legal-card">
+        <mat-card-content>
+          <h3>Legal Information</h3>
+          <p>Review our privacy policy and terms of service.</p>
+          <div class="legal-buttons">
+            <button mat-stroked-button (click)="openPrivacyPolicy()">
+              Privacy Policy
+            </button>
+            <button mat-stroked-button (click)="openTermsOfService()">
+              Terms of Service
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>
+      &copy; 2024 SageMedic AI. All rights reserved. Empowering health through
+      artificial intelligence.
+    </p>
+  </div>
+</div>

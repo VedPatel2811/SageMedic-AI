@@ -1,0 +1,103 @@
+<div class="home-container">
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>SageMedic AI</h1>
+      <p>Your AI-powered symptom checker</p>
+    </div>
+
+    <div class="messages-container" #messagesContainer>
+      <div
+        *ngFor="let message of messages"
+        class="message"
+        [ngClass]="message.type"
+      >
+        <div class="message-content">
+          <div class="message-avatar">
+            <mat-icon *ngIf="message.type === 'assistant'">smart_toy</mat-icon>
+            <mat-icon *ngIf="message.type === 'user'">person</mat-icon>
+          </div>
+          <div class="message-text">
+            <p>{{ message.content }}</p>
+
+            <!-- Confidence indicator for assistant messages -->
+            <div
+              *ngIf="message.type === 'assistant' && message.confidence !== undefined"
+              class="confidence-indicator"
+            >
+              <div class="confidence-bar">
+                <div
+                  class="confidence-fill"
+                  [ngClass]="message.severity"
+                  [style.width.%]="message.confidence * 100"
+                ></div>
+              </div>
+              <span class="confidence-text">
+                Confidence: {{ (message.confidence * 100).toFixed(1) }}%
+                <span class="severity-badge" [ngClass]="message.severity">
+                  {{ message.severity?.toUpperCase() }}
+                </span>
+              </span>
+            </div>
+
+            <span class="timestamp"
+              >{{ message.timestamp | date:'shortTime' }}</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isLoading" class="message assistant">
+        <div class="message-content">
+          <div class="message-avatar">
+            <mat-icon>smart_toy</mat-icon>
+          </div>
+          <div class="message-text">
+            <div class="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field appearance="outline" class="message-input">
+        <mat-label>Describe your symptoms...</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="userInput"
+          (keydown)="onKeyPress($event)"
+          placeholder="e.g., I have a headache and fever for the past 2 days"
+          rows="3"
+          maxlength="500"
+        ></textarea>
+        <mat-hint>{{ userInput.length }}/500</mat-hint>
+      </mat-form-field>
+
+      <button
+        mat-fab
+        color="primary"
+        (click)="sendMessage()"
+        [disabled]="!userInput.trim() || isLoading"
+        class="send-button"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <mat-card>
+      <mat-card-content>
+        <h3>Important Disclaimer</h3>
+        <p>
+          This AI symptom checker is for informational purposes only and should
+          not replace professional medical advice. Always consult with a
+          qualified healthcare provider for proper diagnosis and treatment.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

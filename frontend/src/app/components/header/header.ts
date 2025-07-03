@@ -16,16 +16,6 @@ export class HeaderComponent {
       matIcon: 'home',
     },
     {
-      label: 'Check Symptoms',
-      path: '/check-symptoms',
-      matIcon: 'medical_services',
-    },
-    {
-      label: 'History',
-      path: '/history',
-      matIcon: 'history',
-    },
-    {
       label: 'Settings',
       path: '/settings',
       matIcon: 'settings',

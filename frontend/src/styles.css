@@ -1,1 +1,23 @@
 @import "tailwindcss";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Global styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+/* Material Design overrides */
+.mat-mdc-card {
+  border-radius: 12px !important;
+}
+
+.mat-mdc-button {
+  border-radius: 8px !important;
+}
+
+.mat-mdc-fab {
+  border-radius: 50% !important;
+}

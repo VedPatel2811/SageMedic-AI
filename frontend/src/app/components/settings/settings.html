@@ -1,0 +1,246 @@
+<div class="settings-container">
+  <div class="settings-header">
+    <h1>Settings</h1>
+    <p>Configure your SageMedic AI experience</p>
+  </div>
+
+  <div class="settings-content">
+    <!-- Notifications Section -->
+    <mat-card class="settings-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>notifications</mat-icon>
+          Notifications
+        </mat-card-title>
+        <mat-card-subtitle
+          >Manage how you receive updates and alerts</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Enable Notifications</h3>
+            <p>Receive alerts about important updates and reminders</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.notifications.enabled"
+          ></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div
+          class="setting-item"
+          [class.disabled]="!settings.notifications.enabled"
+        >
+          <div class="setting-info">
+            <h3>Email Notifications</h3>
+            <p>Get updates delivered to your email address</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.notifications.email"
+            [disabled]="!settings.notifications.enabled"
+          ></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div
+          class="setting-item"
+          [class.disabled]="!settings.notifications.enabled"
+        >
+          <div class="setting-info">
+            <h3>Push Notifications</h3>
+            <p>Receive real-time notifications in your browser</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.notifications.push"
+            [disabled]="!settings.notifications.enabled"
+          ></mat-slide-toggle>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Privacy Section -->
+    <mat-card class="settings-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>security</mat-icon>
+          Privacy & Data
+        </mat-card-title>
+        <mat-card-subtitle
+          >Control how your data is collected and used</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Data Collection</h3>
+            <p>Allow us to collect usage data to improve the service</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.privacy.dataCollection"
+          ></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Analytics</h3>
+            <p>Help us understand how you use the application</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.privacy.analytics"
+          ></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Share Data for Research</h3>
+            <p>Anonymously share data to help improve medical AI</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.privacy.shareData"
+          ></mat-slide-toggle>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Interface Section -->
+    <mat-card class="settings-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>palette</mat-icon>
+          Interface
+        </mat-card-title>
+        <mat-card-subtitle>Customize your visual experience</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Theme</h3>
+            <p>Choose your preferred color scheme</p>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="settings.interface.theme">
+              <mat-option *ngFor="let theme of themes" [value]="theme.value">
+                {{ theme.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Language</h3>
+            <p>Select your preferred language</p>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="settings.interface.language">
+              <mat-option
+                *ngFor="let language of languages"
+                [value]="language.value"
+              >
+                {{ language.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Font Size</h3>
+            <p>Adjust text size for better readability</p>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="settings.interface.fontSize">
+              <mat-option *ngFor="let size of fontSizes" [value]="size.value">
+                {{ size.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- AI Settings Section -->
+    <mat-card class="settings-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>psychology</mat-icon>
+          AI Preferences
+        </mat-card-title>
+        <mat-card-subtitle
+          >Configure how the AI responds to your queries</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Response Length</h3>
+            <p>Choose how detailed you want AI responses to be</p>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="settings.ai.responseLength">
+              <mat-option
+                *ngFor="let length of responseLengths"
+                [value]="length.value"
+              >
+                {{ length.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Medical Disclaimer</h3>
+            <p>Always show medical disclaimers with responses</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.ai.medicalDisclaimer"
+          ></mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Save Chat History</h3>
+            <p>Store your conversation history for future reference</p>
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="settings.ai.saveHistory"
+          ></mat-slide-toggle>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Action Buttons -->
+    <div class="settings-actions">
+      <button mat-raised-button color="primary" (click)="saveSettings()">
+        <mat-icon>save</mat-icon>
+        Save Settings
+      </button>
+
+      <button mat-stroked-button (click)="exportData()">
+        <mat-icon>download</mat-icon>
+        Export Settings
+      </button>
+
+      <button mat-stroked-button color="warn" (click)="resetSettings()">
+        <mat-icon>restore</mat-icon>
+        Reset to Default
+      </button>
+    </div>
+  </div>
+</div>
