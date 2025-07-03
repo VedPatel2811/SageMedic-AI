@@ -1,8 +1,9 @@
 import { Component, ElementRef, ViewChild, AfterViewChecked, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Needed for [(ngModel)]
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { PredictService } from '../services/predict.service';
 
 
 @Component({
@@ -16,6 +17,9 @@ export class Home implements OnInit, AfterViewChecked  {
 
   messages: Array<{ text: string; type: 'user' | 'assistant'; timestamp: Date }> = [];
   userInput: string = '';
+  isLoading: boolean = false;
+
+   constructor(private predictService: PredictService) {}
 
   ngOnInit(){
     this.messages.push(
@@ -34,15 +38,28 @@ export class Home implements OnInit, AfterViewChecked  {
   }
 
   sendMessage() {
-    if (!this.userInput.trim()) return;
+    const message = this.userInput.trim();
+    if (!message) return;
 
-    this.messages.push({ text: this.userInput, type: 'user', timestamp: new Date() });
-
-    // Simulate bot reply
-    setTimeout(() => {
-      this.messages.push({ text: `Echo: ${this.userInput}`, type: 'assistant', timestamp: new Date() });
-    }, 500);
-
+    this.messages.push({ text: message, type: 'user', timestamp: new Date() });
     this.userInput = '';
+    this.isLoading = true;
+
+    this.predictService.getPrediction(message).subscribe({
+      next: (response) => {
+        const reply = `I think it might be **${response.label}** (confidence: ${(response.confidence * 100).toFixed(1)}%)`;
+        this.messages.push({ text: reply, type: 'assistant', timestamp: new Date() });
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.messages.push({
+          text: "Sorry, I couldn't process your request. Please try again later.",
+          type: 'assistant',
+          timestamp: new Date()
+        });
+        console.error('API Error:', err);
+        this.isLoading = false;
+      }
+    });
   }
 }
