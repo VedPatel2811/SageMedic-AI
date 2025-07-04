@@ -1,27 +1,47 @@
-<header
-  class="fixed left-0 top-0 h-screen w-64 bg-[#cce6fc] text-black shadow-lg"
->
-  <div class="flex flex-col items-center pt-6">
-    <img src="assets/logo-img.png" alt="SageMedic AI" class="h-30 rounded-[25px] mb-3" />
-    <h1 class="text-2xl font-semibold text-center">SageMedic AI</h1>
-  </div>
-  <nav class="mt-6">
-    <ul class="flex flex-col space-y-2">
-      @for (item of navItems; track item.path) {
-      <li class="flex justify-center">
-        <a
-          [routerLink]="item.path"
-          class="flex items-center gap-3 w-[90%] px-6 py-3 text-black hover:bg-white font-semibold rounded-lg transition-colors duration-200"
-        >
-          <mat-icon
-            aria-hidden="false"
-            aria-label="menu-icon"
-            fontIcon="{{item.matIcon}}"
-          ></mat-icon>
-          {{ item.label }}
-        </a>
-      </li>
-      }
-    </ul>
-  </nav>
-</header>
+<div class="relative">
+  <!-- Toggle button - always visible -->
+  <button
+    (click)="toggleHeader()"
+    class="absolute top-4 left-4 md:top-4 md:left-4 z-50 flex items-center justify-center w-10 h-10 md:w-10 md:h-10 bg-[#cce6fc] text-black rounded-[5px] hover:bg-white transition-all duration-300"
+  >
+    <mat-icon class="text-lg md:text-xl"
+      >{{ isExpanded ? 'menu_open' : 'menu' }}</mat-icon
+    >
+  </button>
+
+  <!-- Header content with smooth transition -->
+  <header
+    [class]="'left-0 top-0 h-screen bg-[#cce6fc] text-black shadow-lg transition-all duration-300 ease-in-out ' + (isExpanded ? 'w-48 sm:w-56 md:w-64' : 'w-0 overflow-hidden')"
+  >
+    <div class="flex flex-col items-center pt-15 md:pt-6 px-2 md:px-0">
+      <img
+        src="logo-img.png"
+        alt="SageMedic AI"
+        class="h-30 w-30 md:h-30 md:w-30 rounded-[15px] md:rounded-[25px] mb-2 md:mb-3"
+      />
+      <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold text-center">
+        SageMedic AI
+      </h1>
+    </div>
+    <nav class="mt-6 md:mt-8">
+      <ul class="flex flex-col space-y-1 md:space-y-2">
+        @for (item of navItems; track item.path) {
+        <li class="flex justify-center">
+          <a
+            [routerLink]="item.path"
+            class="flex items-center gap-3 md:gap-3 w-[90%] px-5 py-3 md:px-6 md:py-3 text-[18px] md:text-base text-black hover:bg-white font-semibold rounded-lg transition-colors duration-200"
+          >
+            <mat-icon
+              aria-hidden="false"
+              aria-label="menu-icon"
+              fontIcon="{{item.matIcon}}"
+              class="text-lg md:text-xl"
+            ></mat-icon>
+            {{ item.label }}
+          </a>
+        </li>
+        }
+      </ul>
+    </nav>
+  </header>
+</div>

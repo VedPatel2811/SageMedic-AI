@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './header.html',
 })
 export class Header {
+  isExpanded: boolean = true;
+
   navItems = [
     {
       label: 'Home',
@@ -26,4 +28,8 @@ export class Header {
       matIcon: 'info',
     },
   ];
+
+  toggleHeader() {
+    this.isExpanded = !this.isExpanded;
+  }
 }

@@ -11,7 +11,6 @@ app = FastAPI()
 
 origins = [
     "http://localhost:4200",
-    "https://sage-medic-ai.vercel.app/" 
 ]
 
 app.add_middleware(
