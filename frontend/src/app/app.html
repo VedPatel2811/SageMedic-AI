@@ -1,7 +1,14 @@
-<!--<div class="flex flex-row">
-  <app-header></app-header>
-  <main class="flex-1">
-    <router-outlet></router-outlet>
-  </main>
-</div>-->
-<router-outlet></router-outlet>
+<main class="main">
+  <div class="content">
+    <h1>Welcome to {{ title }}!</h1>
+
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <button (click)="logout()">Log out</button>
+      <pre *ngIf="auth.user$ | async as user">{{ user | json }}</pre>
+    </ng-container>
+
+    <ng-template #loggedOut>
+      <button (click)="loginWithRedirect()">Log in</button>
+    </ng-template>
+  </div>
+</main>
