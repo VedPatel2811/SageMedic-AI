@@ -7,7 +7,8 @@
     "start": "npm run prebuild && ng serve",
     "build": "npm run prebuild && ng build",
     "watch": "npm run prebuild && ng build --watch --configuration development",
-    "test": "npm run prebuild && ng test"
+    "test": "npm run prebuild && ng test",
+    "vercel-build": "ts-node scripts/set-env.ts && next build"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,7 @@
     "tailwindcss": "^4.1.11",
     "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
+    "typescript": "~5.8.2",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
@@ -41,7 +43,6 @@
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "karma-jasmine-html-reporter": "~2.1.0"
   }
 }
