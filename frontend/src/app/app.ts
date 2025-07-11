@@ -3,10 +3,9 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.html',
+  template: '<router-outlet></router-outlet>',
 })
 export class App {
-  title = 'SageMedic AI';
+  protected title = 'SageMedic AI';
 }

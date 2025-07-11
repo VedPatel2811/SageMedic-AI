@@ -1,6 +1,5 @@
-/* styles.css */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px; /* Smaller width */
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

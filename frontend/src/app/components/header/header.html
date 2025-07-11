@@ -1,0 +1,28 @@
+<header
+  class="flex items-center justify-between p-4 sm:px-[15%] lg:px-[20%] bg-[#000000] text-white shadow-lg"
+>
+  <div>
+    <h1
+      class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089]"
+    >
+      SageMedic AI
+    </h1>
+  </div>
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <button
+      class="bg-gradient-to-r from-[#543ffc] to-[#ec6089] text-white font-bold py-2 px-4 rounded-full"
+      (click)="logout()"
+    >
+      Log Out
+    </button>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <button
+      class="bg-gradient-to-r from-[#543ffc] to-[#ec6089] text-white font-bold py-2 px-4 rounded-full"
+      (click)="loginWithRedirect()"
+    >
+      Sign In
+    </button>
+  </ng-template>
+</header>
