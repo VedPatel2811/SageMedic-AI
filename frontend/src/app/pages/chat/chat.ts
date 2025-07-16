@@ -9,16 +9,17 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { Sidebar } from '../../components/sidebar/sidebar';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule],
+  imports: [CommonModule, FormsModule, MatIconModule, Sidebar],
   templateUrl: './chat.html',
   styleUrls: ['./chat.css'],
 })
 export class Chat implements AfterViewChecked, OnInit {
-  sidebarClosed = true; // Start with sidebar closed on mobile
+  sidebarClosed = true;
   messages: { text: string; sender: 'user' | 'bot' }[] = [];
   userInput = '';
 
@@ -43,6 +44,11 @@ export class Chat implements AfterViewChecked, OnInit {
     document.documentElement.style.setProperty('--app-height', `${vh}px`);
   }
 
+onSidebarToggled(newState: boolean) {
+  this.sidebarClosed = newState;
+}
+
+
   toggleSidebar() {
     this.sidebarClosed = !this.sidebarClosed;
   }
@@ -50,9 +56,8 @@ export class Chat implements AfterViewChecked, OnInit {
   sendMessage() {
     if (this.userInput.trim()) {
       this.messages.push({ text: this.userInput, sender: 'user' });
-      this.userInput = ''; // Clear input immediately
+      this.userInput = '';
 
-      // Simulate a bot response
       setTimeout(() => {
         this.messages.push({
           text: 'This is a simulated response.',
@@ -66,20 +71,17 @@ export class Chat implements AfterViewChecked, OnInit {
     try {
       this.messagesContainer.nativeElement.scrollTop =
         this.messagesContainer.nativeElement.scrollHeight;
-    } catch (err) {
-      // Handle potential errors if the element isn't ready
-    }
+    } catch (err) {}
   }
 
   autoResize() {
     const el = this.textarea.nativeElement;
-    el.style.height = 'auto'; // Reset height
-    el.style.height = `${el.scrollHeight}px`; // Set to scroll height
+    el.style.height = 'auto';
+    el.style.height = `${el.scrollHeight}px`;
   }
 
   handleKeyDown(event: Event) {
     const keyboardEvent = event as KeyboardEvent;
-
     if (!keyboardEvent.shiftKey) {
       keyboardEvent.preventDefault();
       this.sendMessage();
@@ -87,13 +89,12 @@ export class Chat implements AfterViewChecked, OnInit {
   }
 
   get headerStyles(): { width: string; marginRight: string } {
-  if (window.innerWidth < 768) {
-    return { width: '100%', marginRight: '0' };
+    if (window.innerWidth < 768) {
+      return { width: '100%', marginRight: '0' };
+    }
+
+    return this.sidebarClosed
+      ? { width: 'calc(100% - 3.75rem)', marginRight: '3.75rem' }
+      : { width: 'calc(100% - 16rem)', marginRight: '16rem' };
   }
-
-  return this.sidebarClosed
-    ? { width: 'calc(100% - 3.75rem)', marginRight: '3.75rem' }
-    : { width: 'calc(100% - 16rem)', marginRight: '16rem' };
-}
-
 }
