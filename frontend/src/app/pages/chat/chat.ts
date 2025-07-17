@@ -6,10 +6,12 @@ import {
   AfterViewChecked,
   OnInit,
   HostListener,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { Sidebar } from '../../components/sidebar/sidebar';
+import { PredictService } from '../../services/predict.service';
 
 @Component({
   selector: 'app-chat',
@@ -20,8 +22,11 @@ import { Sidebar } from '../../components/sidebar/sidebar';
 })
 export class Chat implements AfterViewChecked, OnInit {
   sidebarClosed = true;
-  messages: { text: string; sender: 'user' | 'bot' }[] = [];
+  messages: { text: string; sender: 'user' | 'bot'; timestamp: Date }[] = [];
   userInput = '';
+  isLoading: boolean = false;
+
+  constructor(private predictService: PredictService, private cdr: ChangeDetectorRef) {}
 
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
   @ViewChild('autoTextarea') textarea!: ElementRef<HTMLTextAreaElement>;
@@ -32,6 +37,13 @@ export class Chat implements AfterViewChecked, OnInit {
 
   ngOnInit() {
     this.setAppHeight();
+    this.messages = [
+      {
+        text: "Hello! I'm SageMedic AI. Please describe your symptoms and I'll help you understand what might be going on. Remember, this is for informational purposes only and should not replace professional medical advice.",
+        sender: 'bot',
+        timestamp: new Date(),
+      },
+    ];
   }
 
   @HostListener('window:resize', ['$event'])
@@ -44,27 +56,44 @@ export class Chat implements AfterViewChecked, OnInit {
     document.documentElement.style.setProperty('--app-height', `${vh}px`);
   }
 
-onSidebarToggled(newState: boolean) {
-  this.sidebarClosed = newState;
-}
-
+  onSidebarToggled(newState: boolean) {
+    this.sidebarClosed = newState;
+  }
 
   toggleSidebar() {
     this.sidebarClosed = !this.sidebarClosed;
   }
 
   sendMessage() {
-    if (this.userInput.trim()) {
-      this.messages.push({ text: this.userInput, sender: 'user' });
-      this.userInput = '';
+    const message = this.userInput.trim();
+    if (!message) return;
 
-      setTimeout(() => {
+    this.messages.push({ text: message, sender: 'user', timestamp: new Date() });
+    this.userInput = '';
+    this.isLoading = true;
+
+    this.predictService.getPrediction(message).subscribe({
+      next: (response) => {
+        const reply = `I think it might be ${response.label} (confidence: ${(response.confidence * 100).toFixed(1)}%)`;
         this.messages.push({
-          text: 'This is a simulated response.',
+          text: reply,
           sender: 'bot',
+          timestamp: new Date(),
         });
-      }, 1000);
-    }
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        this.messages.push({
+          text: "Sorry, I couldn't process your request. Please try again later.",
+          sender: 'bot',
+          timestamp: new Date(),
+        });
+        console.error('API Error:', err);
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      },
+    });
   }
 
   private scrollToBottom(): void {
