@@ -1,12 +1,91 @@
 <!-- Sidebar for Desktop -->
 <div
-  class="bg-[#1a1a1a] text-white flex-col transition-all duration-300 ease-in-out flex-shrink-0 hidden md:flex h-[100dvh] bottom-0"
+  class="bg-[#0b090a] text-white flex-col transition-all duration-300 ease-in-out flex-shrink-0 hidden md:flex h-[100dvh] bottom-0 border-r border-[#333] "
   [class.w-64]="!sidebarClosed"
-  [class.w-15]="sidebarClosed"
+  [class.w-13]="sidebarClosed"
 >
-  <button (click)="toggleSidebar()" class="self-end m-5">
-    <mat-icon>menu</mat-icon>
-  </button>
+  <!-- Header -->
+  <div class="flex justify-between items-center m-3">
+    <div
+      *ngIf="!sidebarClosed"
+      class="flex items-center w-8 p-1 hover:bg-[#1b1b1e] rounded-md"
+    >
+      <img src="logo.ico" />
+    </div>
+    <button
+      (click)="toggleSidebar()"
+      class="hover:cursor-w-resize hover:bg-[#1b1b1e] px-1 pt-1 rounded-md"
+    >
+      <mat-icon>notes</mat-icon>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <div
+    class="flex flex-col gap-6 my-5 p-3"
+    style="flex-grow: 1"
+  >
+    <button
+      matTooltip="Home"
+      matTooltipPosition="right"
+      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+    >
+      <mat-icon>home</mat-icon>
+      <span *ngIf="!sidebarClosed">Home</span>
+    </button>
+
+    <button
+      matTooltip="Chat"
+      matTooltipPosition="right"
+      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+    >
+      <mat-icon>chat</mat-icon>
+      <span *ngIf="!sidebarClosed">Chat</span>
+    </button>
+
+    <button
+      matTooltip="History"
+      matTooltipPosition="right"
+      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+    >
+      <mat-icon>history</mat-icon>
+      <span *ngIf="!sidebarClosed">History</span>
+    </button>
+
+    <button
+      matTooltip="My Reports"
+      matTooltipPosition="right"
+      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+    >
+      <mat-icon>folder</mat-icon>
+      <span *ngIf="!sidebarClosed">My Reports</span>
+    </button>
+
+    <button
+      matTooltip="Help / FAQs"
+      matTooltipPosition="right"
+      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+    >
+      <mat-icon>help_outline</mat-icon>
+      <span *ngIf="!sidebarClosed">Help / FAQs</span>
+    </button>
+  </div>
+
+  <!-- Footer pinned to bottom -->
+  <div class="border-t border-[#333] flex items-center p-3">
+    <img
+      *ngIf="(user$ | async)?.picture"
+      [src]="(user$ | async)?.picture"
+      alt="Profile"
+      class="w-6 rounded-full mr-2 my-2"
+    />
+    <div *ngIf="!sidebarClosed" class="text-sm">
+      <div *ngIf="(user$ | async)?.name">{{ (user$ | async)?.name }}</div>
+      <div *ngIf="(user$ | async)?.email" class="text-gray-400 text-xs">
+        {{ (user$ | async)?.email }}
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Sidebar for Mobile (Overlay) -->
@@ -19,42 +98,72 @@
     class="absolute inset-0 bg-black opacity-50"
     (click)="toggleSidebar()"
   ></div>
-  <div class="relative w-64 bg-[#1a1a1a] h-full flex flex-col text-white">
-    <div class="flex flex-col p-6">
-      <button
-        (click)="toggleSidebar()"
-        class="text-white hover:text-[#ec6089] self-end"
-      >
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+  <div
+    class="relative w-64 bg-[#1a1a1a] h-full flex flex-col text-white justify-between"
+  >
+    <div>
+      <!-- Close Button -->
+      <div class="flex justify-between p-4">
+        <div
+          *ngIf="!sidebarClosed"
+          class="flex justify-start items-center w-8 p-1 mx-1 hover:bg-[#1b1b1e] rounded-md"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      <div class="self-center">
-        <img src="/large-img.png" alt="Logo" class="h-30 w-auto" />
+          <img src="logo.ico" />
+        </div>
+        <button (click)="toggleSidebar()" class="hover:text-[#ec6089]">
+          <mat-icon>notes</mat-icon>
+        </button>
       </div>
-      <button
-        class="bg-gradient-to-r from-[#543ffc] to-[#ec6089] text-white self-center active:bg-black w-full p-3 mt-5 rounded-xl text-xl transition duration-150 ease-in-out cursor-pointer select-none"
-      >
-        Home
-      </button>
-      <button
-        class="bg-gradient-to-r from-[#543ffc] to-[#ec6089] text-white self-center active:bg-black w-full p-3 mt-3 rounded-xl text-xl transition duration-150 ease-in-out cursor-pointer select-none"
-      >
-        Info
-      </button>
+
+      <!-- Navigation -->
+      <div class="flex flex-col px-6 py-5 gap-6">
+        <button
+          class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+        >
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+
+        <button
+          class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+        >
+          <mat-icon>chat</mat-icon>
+          <span>Chat</span>
+        </button>
+
+        <button
+          class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+        >
+          <mat-icon>history</mat-icon>
+          <span>History</span>
+        </button>
+
+        <button
+          class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+        >
+          <mat-icon>folder</mat-icon>
+          <span>My Reports</span>
+        </button>
+
+        <button
+          class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+        >
+          <mat-icon>help_outline</mat-icon>
+          <span>Help / FAQs</span>
+        </button>
+      </div>
     </div>
-    <div class="flex-grow overflow-y-auto p-4">
-      <!-- Mobile sidebar content -->
+
+    <!-- Footer with Auth0 Info -->
+    <div
+      *ngIf="user$ | async as user"
+      class="p-4 border-t border-[#333] flex items-center gap-3"
+    >
+      <img [src]="user.picture" alt="Profile" class="h-10 w-10 rounded-full" />
+      <div class="text-sm">
+        <div>{{ user.name }}</div>
+        <div class="text-gray-400 text-xs">{{ user.email }}</div>
+      </div>
     </div>
   </div>
 </div>

@@ -3,9 +3,9 @@
   class="relative h-[100dvh] bottom-0 w-full flex bg-[#121212] text-white overflow-hidden"
 >
   <app-sidebar
-  [sidebarClosed]="sidebarClosed"
-  (sidebarToggle)="onSidebarToggled($event)"
-></app-sidebar>
+    [sidebarClosed]="sidebarClosed"
+    (sidebarToggle)="onSidebarToggled($event)"
+  ></app-sidebar>
 
   <!-- Chat Area -->
   <div class="flex-grow flex flex-col overflow-hidden bg-[#000000] text-white">
@@ -14,7 +14,7 @@
       [ngStyle]="headerStyles"
     >
       <button (click)="toggleSidebar()" class="md:hidden absolute left-6 top-6">
-        <mat-icon>menu</mat-icon>
+        <mat-icon>notes</mat-icon>
       </button>
       <h1
         class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089]"
@@ -26,33 +26,57 @@
     <!-- Messages Container -->
     <div
       #messagesContainer
-      class="flex-grow self-center w-full overflow-y-auto p-6 pt-24 pb-20 md:mb-22 lg:mb-26 flex flex-col md:w-[80%] lg:w-[53%] custom-scrollbar"
+      class="flex-grow self-center w-full overflow-y-auto p-6 pt-24 pb-20 md:mb-22 lg:mb-26 flex flex-col md:w-[80%] lg:w-[58%] custom-scrollbar"
     >
       <div
         *ngFor="let message of messages"
-        class="flex mb-4 max-w-3/4"
+        class="flex mb-4 w-full"
         [ngClass]="{
-          'self-end': message.sender === 'user',
-          'self-start': message.sender === 'bot'
+          'flex-row-reverse': message.sender === 'user',
+          'flex-row': message.sender === 'bot'
         }"
       >
         <div
-          class="py-3 px-4 rounded-2xl leading-normal"
+          class="w-8 h-8 md:w-[40px] md:h-[40px] rounded-[50%] flex items-center justify-center bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white shadow-lg flex-shrink-0"
+        >
+          <mat-icon
+            class="text-sm md:text-base"
+            *ngIf="message.sender === 'bot'"
+            >smart_toy</mat-icon
+          >
+          <mat-icon
+            class="text-sm md:text-base"
+            *ngIf="message.sender === 'user'"
+            >person</mat-icon
+          >
+        </div>
+        <div
+          class="py-3 px-4 rounded-2xl leading-normal mx-5 md:max-w-[70%]"
           [ngClass]="{
             'bg-[#543ffc] text-white': message.sender === 'user',
-            'bg-gray-700 text-white': message.sender === 'bot'
+            'bg-[#1b1b1e] text-white': message.sender === 'bot'
           }"
         >
           <p>{{ message.text }}</p>
+          <span
+            class="text-xs font-serif"
+            *ngIf="message.timestamp"
+            [ngClass]="{
+              'text-gray-400': message.sender === 'bot',
+              'text-gray-100': message.sender === 'user'
+            }"
+          >
+            {{ message.timestamp | date : "shortTime" }}
+          </span>
         </div>
       </div>
     </div>
 
     <!-- Input Section -->
     <div
-      class="w-full md:w-[70%] lg:w-[50%] px-4 py-4 border-t border-[#543ffc] bg-[#1a1a1a] fixed self-center bottom-0 md:bottom-5 lg:bottom-10 md:border-none lg:border-none md:rounded-2xl z-50"
+      class="w-full md:w-[60%] lg:w-[50%] p-3 border-t border-[#333] bg-[#1b1b1e] fixed self-center bottom-0 md:bottom-5 lg:bottom-10 md:border-2 md:rounded-2xl z-50"
     >
-      <div class="flex items-end bg-[#2a2a2a] rounded-2xl py-2 px-4">
+      <div class="flex items-end py-3 px-4 bg-[#000000] rounded-2xl md:bg-[#1b1b1e]">
         <textarea
           #autoTextarea
           placeholder="Message SageMedic-AI..."
