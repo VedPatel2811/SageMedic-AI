@@ -1,20 +1,43 @@
 <header
-  class="flex items-center justify-between p-4 sm:px-[15%] lg:px-[20%] bg-[#000000] text-white shadow-lg"
+  class="flex items-center justify-between p-4 sm:px-[15%] lg:px-[20%] bg-black text-white shadow-lg"
 >
   <div>
     <h1
-      class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089]"
+      class="text-xl font-bold cursor-pointer text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089]"
+      (click)="goToHome()"
     >
       SageMedic AI
     </h1>
   </div>
-  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-    <button
-      class="bg-gradient-to-r from-[#543ffc] to-[#ec6089] text-white font-bold py-2 px-4 rounded-full"
-      (click)="logout()"
-    >
-      Log Out
-    </button>
+
+  <ng-container *ngIf="(auth.isAuthenticated$ | async); else loggedOut">
+    <!-- Profile Image Trigger -->
+    <div class="relative">
+      <button
+        class="hover:opacity-90"
+        (click)="toggleProfileMenu()"
+        aria-label="User menu"
+      >
+        <img
+          [src]="user?.picture"
+          alt="Profile"
+          class="h-10 w-10 rounded-full border-2 border-gray-200"
+        />
+      </button>
+
+      <!-- Dropdown -->
+      <div
+        *ngIf="profileMenuOpen"
+        class="absolute right-0 mt-2 w-40 bg-white text-black rounded-lg shadow-lg overflow-hidden z-20"
+      >
+        <button
+          class="block w-full text-left px-4 py-2 hover:bg-gray-100"
+          (click)="logout()"
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
   </ng-container>
 
   <ng-template #loggedOut>

@@ -1,6 +1,6 @@
 <!-- Sidebar for Desktop -->
 <div
-  class="bg-[#0b090a] text-white flex-col transition-all duration-300 ease-in-out flex-shrink-0 hidden md:flex h-[100dvh] bottom-0 border-r border-[#333] "
+  class="bg-[#0b090a] text-white flex-col transition-all duration-300 ease-in-out flex-shrink-0 hidden md:flex h-[100dvh] bottom-0 border-r border-[#333]"
   [class.w-64]="!sidebarClosed"
   [class.w-13]="sidebarClosed"
 >
@@ -21,32 +21,22 @@
   </div>
 
   <!-- Navigation -->
-  <div
-    class="flex flex-col gap-6 my-5 p-3"
-    style="flex-grow: 1"
-  >
+  <div class="flex flex-col gap-2 p-1" style="flex-grow: 1">
     <button
       matTooltip="Home"
       matTooltipPosition="right"
-      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+      class="text-md hover:bg-[#1b1b1e] transition flex items-center gap-3 p-2 rounded-md"
+      (click)="goToHome()"
     >
       <mat-icon>home</mat-icon>
       <span *ngIf="!sidebarClosed">Home</span>
     </button>
 
     <button
-      matTooltip="Chat"
-      matTooltipPosition="right"
-      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
-    >
-      <mat-icon>chat</mat-icon>
-      <span *ngIf="!sidebarClosed">Chat</span>
-    </button>
-
-    <button
       matTooltip="History"
       matTooltipPosition="right"
-      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+      class="text-md hover:bg-[#1b1b1e] transition flex items-center gap-3 p-2 rounded-md"
+      (click)="goToUpdates()"
     >
       <mat-icon>history</mat-icon>
       <span *ngIf="!sidebarClosed">History</span>
@@ -55,7 +45,8 @@
     <button
       matTooltip="My Reports"
       matTooltipPosition="right"
-      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+      class="text-md hover:bg-[#1b1b1e] transition flex items-center gap-3 p-2 rounded-md"
+      (click)="goToUpdates()"
     >
       <mat-icon>folder</mat-icon>
       <span *ngIf="!sidebarClosed">My Reports</span>
@@ -64,7 +55,8 @@
     <button
       matTooltip="Help / FAQs"
       matTooltipPosition="right"
-      class="text-md hover:text-[#ec6089] transition flex items-center gap-3"
+      class="text-md hover:bg-[#1b1b1e] transition flex items-center gap-3 p-2 rounded-md"
+      (click)="goToUpdates()"
     >
       <mat-icon>help_outline</mat-icon>
       <span *ngIf="!sidebarClosed">Help / FAQs</span>
@@ -119,6 +111,7 @@
       <div class="flex flex-col px-6 py-5 gap-6">
         <button
           class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+          (click)="goToHome()"
         >
           <mat-icon>home</mat-icon>
           <span>Home</span>
@@ -126,13 +119,7 @@
 
         <button
           class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
-        >
-          <mat-icon>chat</mat-icon>
-          <span>Chat</span>
-        </button>
-
-        <button
-          class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+          (click)="goToUpdates()"
         >
           <mat-icon>history</mat-icon>
           <span>History</span>
@@ -140,6 +127,7 @@
 
         <button
           class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+          (click)="goToUpdates()"
         >
           <mat-icon>folder</mat-icon>
           <span>My Reports</span>
@@ -147,6 +135,7 @@
 
         <button
           class="text-lg hover:text-[#ec6089] transition flex items-center gap-3"
+          (click)="goToUpdates()"
         >
           <mat-icon>help_outline</mat-icon>
           <span>Help / FAQs</span>
@@ -157,7 +146,7 @@
     <!-- Footer with Auth0 Info -->
     <div
       *ngIf="user$ | async as user"
-      class="p-4 border-t border-[#333] flex items-center gap-3"
+      class="p-4 border-t border-[#333] flex items-center gap-3 bottom-0"
     >
       <img [src]="user.picture" alt="Profile" class="h-10 w-10 rounded-full" />
       <div class="text-sm">

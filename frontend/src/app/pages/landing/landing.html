@@ -1,42 +1,28 @@
 <app-header></app-header>
-<body class="bg-white text-gray-900">
+<body class="bg-white text-gray-900 scroll-smooth">
+
   <!-- Hero / Overview Section -->
-  <section class="text-center px-8 sm:px-[15%] lg:px-[25%] py-16 bg-gray-50">
-  <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">
-    Skip the Waiting Room — Get Instant AI Diagnosis Now
-  </h2>
-  <p class="text-lg text-gray-600 mb-4">
-    SageMedic AI empowers you to take charge of your health with just a few clicks.
-    Simply describe your <strong>symptoms</strong>, and our system instantly analyzes them to return the most likely <strong>diagnoses</strong>,
-    backed by clinical data and precision scoring.
-  </p>
-  <p class="text-lg text-gray-600 mb-4">
-    Built using the advanced Hugging Face model
+  <section class="text-center px-8 sm:px-[15%] lg:px-[25%] py-16 bg-gray-50 min-h-screen flex flex-col justify-center items-center">
+    <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">
+      Get Instant AI Diagnosis Now <br>
+      Skip the Waiting Room
+    </h2>
+    <p class="text-lg text-gray-600 mb-4">
+      SageMedic AI empowers you to take charge of your health with just a few clicks.
+    </p>
+    <p class="text-lg text-gray-600 mb-4">
+      Simply describe your <strong>symptoms</strong>, and our system instantly analyzes them to return the most likely <strong>diagnoses</strong>,
+      backed by clinical data and precision scoring.
+    </p>
     <a
-      href="https://huggingface.co/Zabihin/Symptom_to_Diagnosis?utm_source=chatgpt.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="font-semibold text-[#543ffc] underline hover:text-[#3c2de0]"
+      href="/chat"
+      class=" w-[50%] bg-gradient-to-r from-[#543ffc] to-[#ec6089] text-white font-semibold py-2 px-6 rounded-full shadow hover:opacity-90 transition"
     >
-      Zabihin/Symptom_to_Diagnosis
-    </a>,
-    the platform leverages machine learning to provide predictions with
-    <strong>confidence scores</strong> for transparency and reliability.
-  </p>
-  <p class="text-lg text-gray-600 mb-6">
-    Whether you're unsure if you need a doctor or just want peace of mind, SageMedic offers a
-    fast, private, and intelligent first step toward better healthcare — all from your phone or desktop.
-  </p>
-  <a
-    href="/chat"
-    class="inline-block bg-gradient-to-r from-[#543ffc] to-[#ec6089] text-white font-semibold py-2 px-6 rounded-full shadow hover:opacity-90 transition"
-  >
-    Try It Now
-  </a>
-</section>
+      Try It Now
+    </a>
+  </section>
 
-
-  <section
+    <section
     class="relative px-6 py-16 bg-[url('/landing-background.webp')] bg-cover bg-center overflow-hidden"
   >
     <div class="absolute inset-0 bg-white/50 z-0"></div>
@@ -188,62 +174,21 @@
     </div>
   </section>
 
-  <!-- Why It Was Created -->
-  <section class="bg-gray-100 px-8 sm:px-[15%] lg:px-[20%] py-12">
-    <h3
-      class="text-4xl lg:text-5xl p-2 font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089]"
-    >
-      Why SageMedic Was Built
-    </h3>
-    <div
-      class="grid gap-6 max-w-4xl mx-auto mt-10 text-gray-700 text-left"
-    >
-      <div>
-        <h4 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-2 text-[#543ffc]">Did You Know?</h4>
-        <p class="text-lg mx-auto mb-10">
-          According to recent studies, the average wait time to see a specialist
-          in Canada exceeds 10 weeks — a timeline that could delay diagnosis and
-          treatment.
-        </p>
-      </div>
-      <div>
-        <h4 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-2 text-[#543ffc]">Our Mission</h4>
-        <p class="text-lg mx-auto mb-10">
-          SageMedic was created to democratize access to early diagnosis using
-          the power of AI. Our goal is to complement traditional care, not
-          replace it.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- Features Section -->
-  <section class="bg-black/90 px-8 sm:px-[15%] lg:px-[20%] py-16">
-    <h3
-      class="text-4xl lg:text-5xl p-2 text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089] font-bold text-center mb-10"
-    >
+  <section class="bg-black/90 px-8 sm:px-[15%] lg:px-[20%] py-16 min-h-screen flex flex-col justify-center">
+    <h3 class="text-4xl lg:text-5xl p-2 text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089] font-bold text-center mb-10">
       Why Users Love SageMedic AI
     </h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Feature Tile Template -->
-      <div
-        class="group p-6 rounded-xl shadow-md border border-gray-700 bg-gray-100 text-center transition duration-300 hover:bg-gradient-to-r hover:from-[#543ffc] hover:to-[#ec6089] hover:text-white"
-      >
-        <div
-          class="flex justify-center mb-4 text-[#543ffc] text-4xl group-hover:text-white transition"
-        >
+      <!-- Repeated Feature Tiles (6 total) -->
+      <!-- Example -->
+      <div class="group p-6 rounded-xl shadow-md border border-gray-700 bg-gray-100 text-center transition duration-300 hover:bg-gradient-to-r hover:from-[#543ffc] hover:to-[#ec6089] hover:text-white">
+        <div class="flex justify-center mb-4 text-[#543ffc] text-4xl group-hover:text-white transition">
           <mat-icon>schedule</mat-icon>
         </div>
-        <h4
-          class="text-lg font-semibold mb-2 group-hover:text-white transition"
-        >
-          24/7 Availability
-        </h4>
-        <p class="text-sm text-gray-500 group-hover:text-white transition">
-          Get help any time, day or night — no waiting room required.
-        </p>
+        <h4 class="text-lg font-semibold mb-2 group-hover:text-white transition">24/7 Availability</h4>
+        <p class="text-sm text-gray-500 group-hover:text-white transition">Get help any time, day or night — no waiting room required.</p>
       </div>
-
       <!-- Feature 2 -->
       <div
         class="group p-6 rounded-xl shadow-md border border-gray-700 bg-gray-100 text-center transition duration-300 hover:bg-gradient-to-r hover:from-[#543ffc] hover:to-[#ec6089] hover:text-white"
@@ -343,40 +288,22 @@
   </section>
 
   <!-- What's Next Section -->
-  <section
-    class="px-8 sm:px-[15%] lg:px-[20%] py-16 bg-grey-100 text-black text-center"
-  >
-    <h3
-      class="text-4xl lg:text-5xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089]"
-    >
+  <section class="px-8 sm:px-[15%] lg:px-[20%] py-16 bg-gray-100 text-black text-center min-h-screen flex flex-col justify-center">
+    <h3 class="text-4xl lg:text-5xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-[#543ffc] to-[#ec6089]">
       What's Next?
     </h3>
-
     <p class="max-w-2xl text-lg md:text-xl lg:font-semibold mx-auto mb-10">
-      We’re constantly evolving to bring you the best digital healthcare
-      experience. Here’s a glimpse of what’s coming soon.
+      We’re constantly evolving to bring you the best digital healthcare experience. Here’s a glimpse of what’s coming soon.
     </p>
-
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Feature Tile -->
-      <div
-        class="group p-6 rounded-xl shadow-md border border-gray-200 bg-gray-100 hover:bg-gradient-to-r hover:from-[#543ffc] hover:to-[#ec6089] transition duration-300 text-center"
-      >
-        <div
-          class="flex justify-center mb-4 text-[#543ffc] group-hover:text-white text-4xl transition"
-        >
+      <!-- Feature Cards (4 total) -->
+      <div class="group p-6 rounded-xl shadow-md border border-gray-200 bg-gray-100 hover:bg-gradient-to-r hover:from-[#543ffc] hover:to-[#ec6089] transition duration-300 text-center">
+        <div class="flex justify-center mb-4 text-[#543ffc] group-hover:text-white text-4xl transition">
           <mat-icon>language</mat-icon>
         </div>
-        <h4
-          class="text-lg font-semibold mb-2 group-hover:text-white transition"
-        >
-          Multi-Language Support
-        </h4>
-        <p class="text-sm text-gray-600 group-hover:text-white transition">
-          Get medical insights in your preferred language — we're going global.
-        </p>
+        <h4 class="text-lg font-semibold mb-2 group-hover:text-white transition">Multi-Language Support</h4>
+        <p class="text-sm text-gray-600 group-hover:text-white transition">Get medical insights in your preferred language — we're going global.</p>
       </div>
-
       <div
         class="group p-6 rounded-xl shadow-md border border-gray-200 bg-gray-100 hover:bg-gradient-to-r hover:from-[#543ffc] hover:to-[#ec6089] transition duration-300 text-center"
       >
@@ -432,10 +359,10 @@
         </p>
       </div>
     </div>
-
     <p class="italic text-sm text-gray-400 mt-10">
       The future of triage is automated, multilingual, and human-verified.
     </p>
   </section>
+
   <app-footer></app-footer>
 </body>
