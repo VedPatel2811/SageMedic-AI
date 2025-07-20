@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './header.html',
 })
 export class Header {
@@ -34,7 +35,11 @@ export class Header {
     this.auth.logout({ logoutParams: { returnTo: window.location.origin } });
   }
 
-  toggleProfileMenu() {
+  onAvatarClick(){
     this.profileMenuOpen = !this.profileMenuOpen;
+  }
+
+  onAvatarBlur(){
+    this.profileMenuOpen=false;
   }
 }

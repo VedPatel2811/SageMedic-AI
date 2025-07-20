@@ -10,12 +10,13 @@
     </h1>
   </div>
 
-  <ng-container *ngIf="(auth.isAuthenticated$ | async); else loggedOut">
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
     <!-- Profile Image Trigger -->
     <div class="relative">
       <button
         class="hover:opacity-90"
-        (click)="toggleProfileMenu()"
+        (click)="onAvatarClick()"
+        (blur)="onAvatarBlur()"
         aria-label="User menu"
       >
         <img
@@ -28,13 +29,14 @@
       <!-- Dropdown -->
       <div
         *ngIf="profileMenuOpen"
-        class="absolute right-0 mt-2 w-40 bg-white text-black rounded-lg shadow-lg overflow-hidden z-20"
+        class="absolute right-0 mt-2 w-35 bg-[#212529] text-white rounded-lg shadow-lg overflow-hidden z-20"
       >
         <button
-          class="block w-full text-left px-4 py-2 hover:bg-gray-100"
+          class="flex w-full justify-center items-center px-4 py-2 hover:bg-[#343a40] gap-x-2"
           (click)="logout()"
         >
-          Log Out
+          <mat-icon>logout</mat-icon>
+          <span>Log Out</span>
         </button>
       </div>
     </div>

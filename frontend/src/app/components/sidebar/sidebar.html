@@ -8,13 +8,13 @@
   <div class="flex justify-between items-center m-3">
     <div
       *ngIf="!sidebarClosed"
-      class="flex items-center w-8 p-1 hover:bg-[#1b1b1e] rounded-md"
+      class="flex items-center w-12 h-12 hover:bg-[#1b1b1e] rounded-md"
     >
-      <img src="logo.ico" />
+      <img src="logo.png" />
     </div>
     <button
       (click)="toggleSidebar()"
-      class="hover:cursor-w-resize hover:bg-[#1b1b1e] px-1 pt-1 rounded-md"
+      class="hover:cursor-w-resize hover:bg-[#1b1b1e] h-12 px-1 pt-1 right-3 rounded-md"
     >
       <mat-icon>notes</mat-icon>
     </button>
@@ -98,11 +98,11 @@
       <div class="flex justify-between p-4">
         <div
           *ngIf="!sidebarClosed"
-          class="flex justify-start items-center w-8 p-1 mx-1 hover:bg-[#1b1b1e] rounded-md"
+          class="flex justify-start items-center w-15 h-15 p-1 mx-1 hover:bg-[#1b1b1e] rounded-md"
         >
-          <img src="logo.ico" />
+          <img src="logo.png" />
         </div>
-        <button (click)="toggleSidebar()" class="hover:text-[#ec6089]">
+        <button (click)="toggleSidebar()" class="hover:text-[#ec6089] w-12 h-15">
           <mat-icon>notes</mat-icon>
         </button>
       </div>
