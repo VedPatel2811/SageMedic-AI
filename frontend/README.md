@@ -1,59 +1,63 @@
-# Frontend
+# SageMedic-AI Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+This is the frontend for SageMedic-AI, built with Angular. It provides a modern, responsive user interface for interacting with the AI-powered medical diagnosis backend.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Chat-based interface for describing symptoms and receiving AI-powered diagnosis
+- Modern UI with Angular Material and Tailwind CSS
+- Auth0 authentication for secure login
+- Responsive and mobile-friendly design
 
-```bash
-ng serve
-```
+## Requirements
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Node.js (v18+ recommended)
+- npm (v9+ recommended)
+- Angular CLI (`npm install -g @angular/cli`)
 
-## Code scaffolding
+## Setup
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm start
+   ```
+   The app will be available at [http://localhost:4200](http://localhost:4200)
 
-```bash
-ng generate component component-name
-```
+## Available Scripts
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- `npm start` — Start the development server
+- `npm run build` — Build the app for production
+- `npm test` — Run unit tests
 
-```bash
-ng generate --help
-```
+## Angular CLI Commands
 
-## Building
+Here are some useful Angular CLI commands for working with this project:
 
-To build the project run:
+- `ng serve` — Start the development server (same as `npm start`)
+- `ng build` — Build the app for production
+- `ng test` — Run unit tests
+- `ng generate component <name>` — Generate a new component
+- `ng generate service <name>` — Generate a new service
+- `ng add @angular/material` — Add Angular Material to your project
 
-```bash
-ng build
-```
+For more commands, see the [Angular CLI documentation](https://angular.io/cli).
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Connecting to the Backend
 
-## Running unit tests
+- The frontend expects the backend API to be running at `http://localhost:8080` (see backend setup).
+- Update the API URL in the Angular environment files if your backend runs elsewhere: `src/environments/environment.ts`
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Project Structure
 
-```bash
-ng test
-```
+- `src/app/pages/` — Main pages (chat, landing, updates)
+- `src/app/components/` — Reusable UI components (header, footer, sidebar)
+- `src/app/services/` — API integration and business logic
+- `public/` — Static assets (logo, background)
 
-## Running end-to-end tests
+## License
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+See [LICENSE](../LICENSE) for details.
