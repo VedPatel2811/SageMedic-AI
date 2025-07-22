@@ -70,6 +70,34 @@
           </span>
         </div>
       </div>
+      <div
+        *ngIf="isLoading"
+        class="flex flex-row items-center mt-2"
+      >
+        <div
+          class="w-8 h-8 md:w-[40px] md:h-[40px] rounded-[50%] flex items-center justify-center bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white shadow-lg flex-shrink-0"
+        >
+          <mat-icon class="text-sm md:text-base">smart_toy</mat-icon>
+        </div>
+        <div
+          class="py-3 px-4 rounded-2xl leading-normal mx-5 md:max-w-[70%] bg-[#1b1b1e]"
+        >
+          <div class="flex space-x-1">
+            <span
+              class="block w-1.5 h-1.5 md:w-2 md:h-2 bg-[#543ffc] rounded-full animate-bounce"
+              style="animation-delay: 0s"
+            ></span>
+            <span
+              class="block w-1.5 h-1.5 md:w-2 md:h-2 bg-[#543ffc] rounded-full animate-bounce"
+              style="animation-delay: 0.2s"
+            ></span>
+            <span
+              class="block w-1.5 h-1.5 md:w-2 md:h-2 bg-[#543ffc] rounded-full animate-bounce"
+              style="animation-delay: 0.4s"
+            ></span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Input Section -->
