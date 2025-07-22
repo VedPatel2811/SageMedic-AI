@@ -14,9 +14,9 @@
     <!-- Profile Image Trigger -->
     <div class="relative">
       <button
+        #avatarButton
         class="hover:opacity-90"
-        (click)="onAvatarClick()"
-        (blur)="onAvatarBlur()"
+        (click)="onAvatarClick($event)"
         aria-label="User menu"
       >
         <img
@@ -28,6 +28,7 @@
 
       <!-- Dropdown -->
       <div
+        #profileMenu
         *ngIf="profileMenuOpen"
         class="absolute right-0 mt-2 w-35 bg-[#212529] text-white rounded-lg shadow-lg overflow-hidden z-20"
       >
