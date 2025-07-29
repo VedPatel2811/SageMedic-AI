@@ -1,5 +1,5 @@
-fastapi[all]
-uvicorn
+fastapi
+uvicorn[standard]
 transformers
 tensorflow==2.15.0
 tf-keras
