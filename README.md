@@ -4,14 +4,14 @@ SageMedic-AI is a web application for medical diagnosis assistance using AI. It 
 
 ## Project Structure
 
-- `backend/` - FastAPI app for AI-powered diagnosis
+- `AI model/` - FastAPI app for AI-powered diagnosis
 - `frontend/` - Angular app for user interface
 
 ## Getting Started
 
-### Backend
+### AI model
 
-See [backend/README.md](backend/README.md) for setup and usage instructions.
+See [AI\ model/README.md](AI model/README.md) for setup and usage instructions.
 
 ### Frontend
 

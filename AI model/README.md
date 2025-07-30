@@ -1,6 +1,6 @@
-# SageMedic-AI Backend
+# SageMedic-AI AI Model
 
-This is the backend service for SageMedic-AI, built with FastAPI and utilizing a Hugging Face Transformers model for symptom-to-diagnosis prediction.
+This is the base model service for SageMedic-AI, built with FastAPI and utilizing a Hugging Face Transformers model for symptom-to-diagnosis prediction.
 
 ## Features
 
@@ -22,7 +22,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-## Running the Backend
+## Running the Model
 
 Start the FastAPI server with:
 
@@ -32,7 +32,7 @@ uvicorn app:app --reload
 
 ## Running with Docker
 
-You can also run the backend in a Docker container:
+You can also run the model in a Docker container:
 
 1. **Build the Docker image:**
    ```bash
@@ -43,7 +43,7 @@ You can also run the backend in a Docker container:
    docker run -p 8080:8080 sagemedic-backend
    ```
 
-This will start the backend server at `http://localhost:8080` inside the container.
+This will start the model server at `http://localhost:8080` inside the container.
 
 ## API Endpoint
 
