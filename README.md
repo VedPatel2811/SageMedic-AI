@@ -11,7 +11,7 @@ SageMedic-AI is a web application for medical diagnosis assistance using AI. It 
 
 ### AI model
 
-See [AI\ model/README.md](AI model/README.md) for setup and usage instructions.
+See [AI model/README.md](AI%20model/README.md) for setup and usage instructions.
 
 ### Frontend
 
